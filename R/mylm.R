@@ -41,7 +41,7 @@ mylm <- function(x, y, alpha=0.05) { # x and y are vectors
   u1 <- betahat[2] + me1
   ci_beta1 <- c(l1, u1)
 
-  g <- ggplot(data = dat, aes(x = x, y = y)) +
+  g <-   ggplot(data = dat, aes(x = x, y = y)) +
     geom_point(size = 3.5, color = "green") +
     stat_smooth(method = "lm", formula = y ~ x) +
     stat_poly_eq(
