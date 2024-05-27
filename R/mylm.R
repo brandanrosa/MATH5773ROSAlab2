@@ -9,6 +9,9 @@
 #' @return a scatter plot with LSRL and an invisible list with above named components
 #' @export
 #'
+#' @importFrom ggplot2 aes geom_point labs ggplot stat_smooth after_stat
+#'
+#'
 #' @examples \dontrun{mylm(x = spruce$BHDiameter, y = spruce$Height)}
 mylm <- function(x, y, alpha=0.05) { # x and y are vectors
   x0 <- rep(1, times = length(x))
@@ -28,7 +31,7 @@ mylm <- function(x, y, alpha=0.05) { # x and y are vectors
 
   ssq <- RSS / degfree
   s <- sqrt(ssq)
-  tt <- qt(1-alpha/2, df = degfree)
+  tt <- stats::qt(1-alpha/2, df = degfree)
 
   me0 <- tt*s*sqrt(cc[1,1])
   me1 <- tt*s*sqrt(cc[2,2])
@@ -41,12 +44,12 @@ mylm <- function(x, y, alpha=0.05) { # x and y are vectors
   u1 <- betahat[2] + me1
   ci_beta1 <- c(l1, u1)
 
-  g <-   ggplot(data = dat, aes(x = x, y = y)) +
+  g <- ggplot(data = dat, aes(x = x, y = y)) +
     geom_point(size = 3.5, color = "green") +
     stat_smooth(method = "lm", formula = y ~ x) +
-    stat_poly_eq(
+    ggmisc::stat_poly_eq(
       formula = y ~ x,
-      aes(label = paste(after_stat(eq.label), sep = "~~~~")),
+      aes(label = paste(after_stat(ggmisc::eq.label), sep = "~~~~")),
       parse = TRUE,
       cex = 5,
       color = "blue") +

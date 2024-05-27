@@ -2,7 +2,6 @@
 #'
 #' A function which produces three plots based on Gradient Descent Theory. The plots estimate, you guessed it, the Beta's
 #'
-#'
 #' @param binit initial estimate of beta's
 #' @param s learning rate
 #' @param iter number of iterations
@@ -14,17 +13,17 @@
 #' @export
 #'
 #' @examples \dontrun{mygd(binit=c(10,4), s=0.001, iter=500, ylm, x, y)}
-mygd <- function(binit = c(), s = 0.00001, iter = 500, ylm = ylmf, x, y){
+mygd <- function(binit = c(), s = 0.00001, iter = 500, ylm , x, y){
 
   # Matrices
-  x = model.matrix(ylm)
+  x = stats::model.matrix(ylm)
   y = as.matrix(y)
 
   # BetaHat
   betahat <- solve(t(x) %*% x) %*% t(x) %*% y
 
   # ylm
-  sm <- summary(lm(y ~ x[, 2]))
+  sm <- summary(stats::lm(y ~ x[, 2]))
 
   # estimated Beta's as matrix
   binit <- as.matrix(binit)
@@ -42,15 +41,15 @@ mygd <- function(binit = c(), s = 0.00001, iter = 500, ylm = ylmf, x, y){
 
   beta <- t(beta)
 
-  t0 <- as.vector(tail(beta)[,1])
-  t1 <- as.vector(tail(beta)[,2])
+  t0 <- as.vector(utils::tail(beta)[,1])
+  t1 <- as.vector(utils::tail(beta)[,2])
 
   Index = c(1:(iter + 1))
 
   beta.df <- data.frame(Index, beta[,1], beta[,2])
   names(beta.df) <- c("Index", "Intercept", "Slope")
 
-  par(mfrow = c(1, 3))
+  graphics::par(mfrow = c(1, 3))
 
   p1 <- plot(x = beta.df$Index,
              y = beta.df$Intercept,
@@ -63,7 +62,7 @@ mygd <- function(binit = c(), s = 0.00001, iter = 500, ylm = ylmf, x, y){
              cex = 1.2
   )
 
-  abline(h = ylm$coefficients[1], col = 'blue')
+  graphics::abline(h = ylm$coefficients[1], col = 'blue')
 
   p2 <- plot(x = beta.df$Index,
              y = beta.df$Slope,
@@ -76,7 +75,7 @@ mygd <- function(binit = c(), s = 0.00001, iter = 500, ylm = ylmf, x, y){
              cex = 1.2
   )
 
-  abline(h = ylm$coefficients[2], col = "blue")
+  graphics::abline(h = ylm$coefficients[2], col = "blue")
 
   p3 <- plot(x = beta.df$Index,
              y = sslope,
@@ -87,5 +86,24 @@ mygd <- function(binit = c(), s = 0.00001, iter = 500, ylm = ylmf, x, y){
              xlab = "Index"
   )
 
-  invisible(list(B0.hat_tail = tail(beta.df$Intercept), B1.hat_tail = tail(beta.df$Slope), compare_to_ylm=coef(ylm)))
+  invisible(list(B0.hat_tail = utils::tail(beta.df$Intercept), B1.hat_tail = utils::tail(beta.df$Slope), compare_to_ylm=stats::coef(ylm)))
 }
+
+
+
+
+
+
+
+
+??chooseBiocMirror()
+
+
+
+
+
+
+
+
+
+

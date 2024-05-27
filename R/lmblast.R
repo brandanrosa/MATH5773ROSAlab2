@@ -28,14 +28,14 @@ lmblast <- function(obj, alpha = 0.05) { # obj is an lm()
   Y <- as.matrix(obj$model[,2])
 
   # AIC (Akaike Info Criterion)
-  aic <- extractAIC(obj)
+  aic <- stats::extractAIC(obj)
 
   # S-Squared (point est for pop var)
   s <- sm$sigma
   ssq <- s^2
 
   # 100(1 - alpha)% ci for Beta Vector
-  ci <- confint(obj, level = 1-alpha)
+  ci <- stats::confint(obj, level = 1-alpha)
   ci
 
   # List

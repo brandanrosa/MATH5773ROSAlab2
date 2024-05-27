@@ -3,12 +3,12 @@
 \docType{data}
 \name{spruce}
 \alias{spruce}
-\title{SPRUCE data set}
+\title{SPRUCE}
 \format{
-A data frame with 36 rows and 2 vector columns:
-\describe{ **EDIT FIELDS BELOW FOR VARIABLES**
-  \item{BHDiameter}{Breast-Height Diameter of the tree}
-  \item{Height}{The actual height of the tree}
+A data frame with 15 rows and 2 columns variables:
+\describe{
+  \item{BHDiameter}{breast  height diameter}
+  \item{Height}{Height of tree}
   ...
 }
 }
@@ -19,6 +19,9 @@ A data frame with 36 rows and 2 vector columns:
 spruce
 }
 \description{
-A data set concerning Spruce trees and their Breast-Height Diameter vs their actual height.
+A dataset containing data about spruce trees.
+}
+\details{
+This is a standard data set featured in the courses of the MSAS program at OU taken provided by the textbook.
 }
 \keyword{datasets}

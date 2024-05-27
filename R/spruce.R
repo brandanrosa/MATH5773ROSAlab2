@@ -1,13 +1,16 @@
-#' SPRUCE data set
+#' SPRUCE
 #'
-#' A data set concerning Spruce trees and their Breast-Height Diameter vs their actual height.
+#' A dataset containing data about spruce trees.
 #'
 #' @format
-#' A data frame with 36 rows and 2 vector columns:
-#' \describe{ **EDIT FIELDS BELOW FOR VARIABLES**
-#'   \item{BHDiameter}{Breast-Height Diameter of the tree}
-#'   \item{Height}{The actual height of the tree}
+#' A data frame with 15 rows and 2 columns variables:
+#' \describe{
+#'   \item{BHDiameter}{breast  height diameter}
+#'   \item{Height}{Height of tree}
 #'   ...
 #' }
+#'
+#' @details This is a standard data set featured in the courses of the MSAS program at OU taken provided by the textbook.
+#'
 #' @source <https://www.amazon.com/Statistics-Engineering-Sciences-William...
 "spruce"

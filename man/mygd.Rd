@@ -4,7 +4,7 @@
 \alias{mygd}
 \title{mygd}
 \usage{
-mygd(binit = c(), s = 1e-05, iter = 500, ylm = ylmf, x, y)
+mygd(binit = c(), s = 1e-05, iter = 500, ylm, x, y)
 }
 \arguments{
 \item{binit}{initial estimate of beta's}
