@@ -24,7 +24,7 @@ library(MATH5773ROSAlab2)
 library(ggplot2)
 library(ggpmisc)
 spruce <- read.csv("SPRUCE.csv")
-fire <- readxl::read_xls("FIREDAM.XLS")
+fire <- read.csv("fire.csv")
 ```
 
 # Task 1
@@ -120,7 +120,7 @@ mylm <- function(x, y, alpha=0.05) { # x and y are vectors
 }
 ```
 
-```{r, warning=FALSE}
+```{r, fig.align="center", fig.width=7, fig.height=5}
 l <- mylm(x = spruce$BHDiameter, y = spruce$Height)
 l
 ```
@@ -146,7 +146,7 @@ Based on the outputs from `mylm()` and the `summary(ylm)`, both methods produce 
 
 ## 1
 
-```{r}
+```{r, fig.align="center", fig.width=7, fig.height=5}
 ylm <- lm(DAMAGE ~ DISTANCE, data = fire)
 
 myrss <- function(x, list = TRUE){ # x a vector
@@ -169,12 +169,13 @@ grd2 <- within(grd, z <- zz)
 grd22 <- grd2[which.min(zz), ] # minimize cost
 
 scatterplot3d::scatterplot3d(grd2, 
-                             xlab  = expression(hat(beta)[0]),
-                             ylab = expression(hat(beta)[1]),
-                             zlab = expression(SSE),
-                             main = "Loss function",
-                             highlight.3d = TRUE,
-)
+              xlab  = expression(hat(beta)[0]),
+              ylab = expression(hat(beta)[1]),
+              zlab = expression(SSE),
+              main = "Loss function",
+              highlight.3d = TRUE
+              )
+
 myrss(coef(ylm),list = TRUE)
 ```
 
@@ -285,7 +286,7 @@ $$
 
 ## 6 `graddesc`
 
-```{r}
+```{r, fig.align="center", fig.width=7, fig.height=5}
 mygd <- function(binit = c(), s = 0.00001, iter = 500, ylm = ylmf, x, y){
   
   # Matrices

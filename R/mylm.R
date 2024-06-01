@@ -11,7 +11,6 @@
 #'
 #' @importFrom ggplot2 aes geom_point labs ggplot stat_smooth after_stat
 #'
-#'
 #' @examples \dontrun{mylm(x = spruce$BHDiameter, y = spruce$Height)}
 mylm <- function(x, y, alpha=0.05) { # x and y are vectors
   x0 <- rep(1, times = length(x))
@@ -47,12 +46,12 @@ mylm <- function(x, y, alpha=0.05) { # x and y are vectors
   g <- ggplot(data = dat, aes(x = x, y = y)) +
     geom_point(size = 3.5, color = "green") +
     stat_smooth(method = "lm", formula = y ~ x) +
-    ggmisc::stat_poly_eq(
-      formula = y ~ x,
-      aes(label = paste(after_stat(ggmisc::eq.label), sep = "~~~~")),
-      parse = TRUE,
-      cex = 5,
-      color = "blue") +
+    ggpmisc::stat_poly_eq(
+       formula = y ~ x,
+       aes(label = paste(after_stat(ggpmisc::stat_poly_eq$eq.label), sep = "~~~~")),
+       parse = TRUE,
+       cex = 5,
+       color = "blue") +
     labs(title = "Scatterplot with LSRL")
   print(g)
 
